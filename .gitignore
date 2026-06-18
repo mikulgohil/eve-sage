@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+dist/
+build/
+out/
+
+# Environment
+.env
+.env*.local
+.env.production
+
+# eve / agent runtime
+.eve/
+sandbox/
+
+# Logs & caches
+*.log
+.turbo/
+.vercel/
+coverage/
+
+# Eval artifacts
+evals/results/
+.firecrawl/
+
+# OS
+.DS_Store
+Thumbs.db
