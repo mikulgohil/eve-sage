@@ -1,0 +1,14 @@
+[
+  {
+    "question": "How do I gate a tool on human approval?",
+    "relevant_urls": ["https://eve.dev/docs/tools"]
+  },
+  {
+    "question": "What is a declared subagent and where does it live?",
+    "relevant_urls": ["https://eve.dev/docs/subagents"]
+  },
+  {
+    "question": "How do I connect an agent to an MCP server?",
+    "relevant_urls": ["https://eve.dev/docs/connections"]
+  }
+]
