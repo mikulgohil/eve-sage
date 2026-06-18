@@ -1,0 +1,32 @@
+{
+  "name": "eve-sage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An eve agent that's an expert on eve — agentic RAG over the Vercel AI stack docs.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "eve dev",
+    "build": "eve build",
+    "start": "eve start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ingest": "tsx ingestion/index.ts",
+    "eval": "tsx evals/run.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "ai": "7.0.0-beta.178",
+    "eve": "^0.11.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

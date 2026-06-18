@@ -16,6 +16,7 @@ out/
 
 # eve / agent runtime
 .eve/
+.output/
 sandbox/
 
 # Logs & caches
