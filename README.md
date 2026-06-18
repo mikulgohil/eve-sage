@@ -163,23 +163,25 @@ project is built; they are **targets**, not results, until M2 lands.
 
 ## Getting started
 
-> ⚠️ **Early WIP.** The repo is being built milestone-by-milestone (see the roadmap).
-> Setup steps below are filled in as each milestone lands.
+> Requires **Node 24+** (eve pins `engines.node`). A `.node-version` is committed; with `fnm`/`nvm` just run `fnm use`.
 
 ```bash
-# clone
 git clone https://github.com/mikulgohil/eve-sage.git
 cd eve-sage
-
-# install (coming with M1)
 pnpm install
 
-# configure (coming with M1)
-cp .env.example .env.local   # Voyage, Anthropic / AI Gateway, Postgres URL
+cp env.example .env.local          # fill in keys + DATABASE_URL
 
-# ingest the docs corpus, then run the agent locally
-pnpm ingest
-pnpm dev
+# Postgres + pgvector (local, optional):
+#   docker run -e POSTGRES_PASSWORD=pass -p 5432:5432 pgvector/pgvector:pg16
+psql "$DATABASE_URL" -f db/schema.sql
+
+pnpm ingest                        # scrape + embed the docs corpus
+pnpm dev                           # eve dev server (TUI + web widget)
+
+pnpm test                          # unit tests (live-service tests self-skip without keys)
+pnpm typecheck                     # tsc --noEmit
+pnpm eval                          # retrieval recall@k over the golden set
 ```
 
 ---
@@ -188,7 +190,7 @@ pnpm dev
 
 Flagship scope, built as four independently shippable milestones:
 
-- [ ] **M1 — Core**: ingestion pipeline + hybrid retrieval + single agent + web channel + eval harness
+- [~] **M1 — Core**: ingestion pipeline + hybrid retrieval + agent tools + eval harness — *code-complete and unit-tested; pending a live end-to-end run (ingest + eval) once credentials are set.*
 - [ ] **M2 — Agentic**: retriever + verifier subagents; document the eval lift in the benchmark table
 - [ ] **M3 — Surface**: Slack + GitHub channels, human-in-the-loop approval gate, tracing screenshots
 - [ ] **M4 — Polish**: CI eval gate, architecture docs, live deployment, launch
@@ -197,9 +199,11 @@ Flagship scope, built as four independently shippable milestones:
 
 ## 🚧 Project status
 
-This is an **early work in progress**. The design is locked and the repo is being built in the
-open. The README describes the target architecture; the benchmark numbers are targets until the
-eval suite runs against real ingested data in M2. Follow along as the milestones land.
+**Work in progress.** The M1 core is code-complete and unit-tested (`pnpm test` → green; `eve info`
+→ 0 errors), built TDD-style with the full design + plan committed under `docs/superpowers/`.
+What's left for M1 is a live end-to-end run (ingest the corpus, run the eval) once API credentials
+are set — the live-service tests self-skip until then. The benchmark numbers stay marked as targets
+until that run lands in M2. Follow along as the milestones progress.
 
 ---
 
