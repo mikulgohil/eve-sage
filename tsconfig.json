@@ -13,5 +13,5 @@
     "types": ["node"],
     "noEmit": true
   },
-  "include": ["agent", "lib", "ingestion", "evals"]
+  "include": ["agent", "lib", "ingestion", "evals", "tests"]
 }

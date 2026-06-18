@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
 
-vi.mock("../../lib/retrieval", () => ({
+vi.mock("../lib/retrieval", () => ({
   retrieve: vi.fn(async () => [
     { id: "x#0", url: "u", title: "T", section: "S", text: "answer body", contextualText: "c" },
   ]),
 }));
 
-import searchDocs from "./search_docs";
+import searchDocs from "../agent/tools/search_docs";
 
 describe("search_docs tool", () => {
   it("returns trimmed results from retrieve()", async () => {
